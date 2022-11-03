@@ -1,0 +1,105 @@
+{% include 'header.html' %}
+  <div class="content-wrapper" style="background-image: url('static/dist/img/white2.jpg'); background-size: cover;">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12">
+            <h1 class="m-0">Setting Potongan Gaji</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-8" style="margin: auto; min-width: 350px;">
+            <div class="card">
+              <div class="card-body table-responsive p-2">
+                <table id="example1" class="table table-bordered table-striped">
+                  <div >
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-light alert-dismissable" style="background-color: #E0FFFF; color: darkcyan;" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                    {{message}}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                  </div>
+                  <a href="#addPotonganModal" class="btn btn-success btn-sm" data-toggle="modal" style="float: right;"><i class="fas fa-plus-circle">&nbsp;</i> <span>Add Potongan</span></a>
+                  <thead>
+                    <tr style="text-align: center; color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">
+                      <!-- <th style="width: 1%;">No</th> -->
+                      <th style="width: 1%;">ID Pot.</th>
+                      <th>Jenis</th>
+                      <th>Jumlah</th>
+                      <th style="width: 1%;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- {% set no=namespace(value=1) %} -->
+                    {% for row in container_potongan %}
+                    <tr style=" font-size: 14px;">
+                      <!-- <td style="width: 1%;">{{ no.value }}</td>
+                      {% set no.value=no.value+1 %} -->
+                      <td style="text-align: center; width: 1%;">{{ row[0] }}</td>
+                      <td style="text-align: center; width: 1%;">{{ row[1] }}</td>
+                      <td style="text-align: right; width: 1%;">{{ row[2] }}</td>
+                      <td style="width: 1%;">
+                        <div class="btn btn-block" style="margin: auto; text-align: center;">
+                          <a href="{{ url_for('update_potongan', id_potongan = row[0]) }}" class="btn btn-info btn-sm" role="button"><i class="fas fa-pen"></i></a>
+                          <a class="btn btn-danger btn-sm" style="border-radius: 20px;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash-alt"></i></a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="text-align: center; color: aliceblue; background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
+                            <p style="text-align: center; font-size: 12px;">Yakin Untuk Hapus  ?</p>
+                            <a class="btn btn-danger btn-sm" href="{{ url_for('delete_potongan', id_potongan = row[0]) }}" style="font-size: 10px; text-align: center;">Lanjut Hapus</a><br>
+                            <a class="btn btn-light btn-sm" href="{{ url_for('potongan') }}" style="font-size: 10px; text-align: center; margin-top: 5px;">Batalkan</a>
+                          </div>
+                        </div>
+                      </td>  
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="addPotonganModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="{{ url_for('insert_potongan') }}" method="POST">
+            <div class="modal-header">						
+              <h4 class="modal-title">Tambah Data Potongan</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+              <input type="hidden" name="id_potongan" class="form-control">
+              <div class="form-group col-md-14">
+                  <label for="jenis_potongan">Jenis Potongan</label>
+                  <select id="jenis_potongan" class="form-control" name="jenis_potongan" placeholder="Masukkan Jenis Potongan ...">
+                      <option value="">-- Pilih Jenis Potongan : --</option>
+                      <option value="Warung">Warung</option>
+                      <option value="Pre-School">Pre-School</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="jumlah_potongan">Jumlah Potongan</label>
+                  <input type="text" class="form-control" id="jumlah_potongan" name="jumlah_potongan" placeholder="Masukkan Jumlah Potongan ...">
+              </div>					
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-success" value="Add">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include 'footer.html' %}

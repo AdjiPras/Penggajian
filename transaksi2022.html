@@ -1,0 +1,131 @@
+{% include 'header.html' %}
+  <div class="content-wrapper" style="background-image: url('static/dist/img/white2.jpg'); background-size: cover;">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12">
+            <h1 class="m-0">Data Gaji 2022</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12" style="margin: auto;">
+            <div class="card">
+              <div class="card-body table-responsive p-2">
+                <table  id="example1" class="table table-bordered table-striped">
+                  <div class="dropdown">
+                    <button onclick="myFunction()" class="btn btn-info btn-md"><i class="fas fa-filter" style="font-size: 12px;"></i>&nbsp;Filter&nbsp;&nbsp;<i class="fas fa-sort-down right"></i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                      <a href="{{ url_for('transaksi') }}">Semua</a>
+                      <a href="{{ url_for('tahun2021') }}">2021</a>
+                      <a href="{{ url_for('tahun2022') }}">2022</a>
+                    </div>
+                  </div>
+                  <a href="{{ url_for('laporan_gaji_2022') }}" class="btn btn-warning btn-sm" value="Cetak" target="new" style="padding: 7.5px; font-weight: bold;"><i class="fas fa-file-pdf">&nbsp;</i>Download (PDF)</a>
+                  <thead>
+                    <tr style="text-align: center; color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">
+                      <th>ID</th>
+                      <th>Tanggal</th>
+                      <th>NIK</th>
+                      <th>Nama Pegawai</th>
+                      <th>JK</th>
+                      <th>Jabatan</th>
+                      <th>Gaji Pokok</th>
+                      <th>Tj.Transport</th>
+                      <th>Makan</th>
+                      <th>Jml.Potongan</th>
+                      <th>Total Gaji</th>
+                      <th>Validasi</th>
+                      <!-- <th style="width: 1%;">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in container_transaksi_2022 %}
+                    <tr style="text-align: center; font-size: 14px;">
+                      <td>{{ row[0] }}</td>
+                      <td>{{ row[1] }}</td>
+                      <td>{{ row[2] }}</td>
+                      <td>{{ row[3] }}</td>
+                      <td>{{ row[4] }}</td>
+                      <td>{{ row[5] }}</td>
+                      <td style="text-align: right;">{{ row[6] }}</td>
+                      <td style="text-align: right;">{{ row[7] }}</td>
+                      <td style="text-align: right;">{{ row[8] }}</td>
+                      <td style="text-align: right;">{{ row[9] }}</td>
+                      <td style="text-align: right;">{{ row[10] }}</td>
+                      <td style="text-align: center;">{{ row[11] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="addGajiModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="{{ url_for('insert_gaji') }}" method="POST">
+            <div class="modal-header">						
+              <h4 class="modal-title">Transaksi Baru</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+              <input type="hidden" name="id_gaji" class="form-control">
+              <div class="form-group col-md-14">
+                <label for="id_pegawai">Pegawai</label>
+                <select id="id_pegawai" class="form-control" name="id_pegawai" placeholder="">
+                    <option value="">-- Pilih Pegawai : --</option>
+                    <option value="5">Admin HR</option>
+                    <option value="4">Accounting</option>
+                    <option value="3">PIC</option>
+                    <option value="1">Harian</option>
+                    <option value="6">Borongan</option>
+                </select>
+            </div>
+              <div class="form-group col-md-14">
+                  <label for="id_jabatan">Jabatan</label>
+                  <select id="id_jabatan" class="form-control" name="id_jabatan" placeholder="">
+                      <option value="">-- Pilih Jabatan : --</option>
+                      <option value="1">Admin HR</option>
+                      <option value="2">Accounting</option>
+                      <option value="3">PIC</option>
+                  </select>
+              </div>
+              <div class="form-group col-md-14">
+                <label for="id_potongan">Potongan</label>
+                <select id="id_potongan" class="form-control" name="id_potongan" placeholder="">
+                    <option value="">-- Pilih Jenis Potongan : --</option>
+                    <option value="1">Warung</option>
+                    <option value="2">Pre-School</option>
+                </select>
+              </div>
+              <div class="form-group col-md-14">
+                <label for="date">Tanggal</label>
+                <input type="date" class="form-control" id="date" name="date" placeholder="">
+              </div>	
+              <div class="form-group col-md-14">
+                <label for="status_gaji">Status</label>
+                <select id="validasi" class="form-control" name="status_gaji" placeholder="">
+                    <option value="">-- Pilih Status : --</option>
+                    <option value="1">Valid</option>
+                    <option value="0">No</option>
+                </select>
+              </div>				
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-success" value="Add">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include 'footer.html' %}

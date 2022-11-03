@@ -1,0 +1,165 @@
+{% include 'header.html' %}
+  <div class="content-wrapper" style="background-image: url('static/dist/img/white2.jpg'); background-size: cover;">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12">
+            <h1 class="m-0">Data Pegawai</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body table-responsive p-2">
+                <table  id="example1" class="table table-bordered table-striped">
+                  <div>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-light alert-dismissable" style="background-color: #E0FFFF; color: darkcyan;" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                    {{message}}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                  </div>
+                  <a href="#addPegawaiModal" class="btn btn-success btn-sm" data-toggle="modal" style="float: right;"><i class="fas fa-plus-circle"></i>&nbsp;<span> Add Data</span></a>
+                  <thead>
+                    <tr style="text-align: center; color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">
+                      <!-- <th style="width: 1%;">No</th> -->
+                      <th style="width: 1%;">ID</th>
+                      <th>Tgl Masuk</th>
+                      <th>NIK</th>
+                      <th>Nama</th>
+                      <th>Username</th>
+                      <th>Password</th>
+                      <th>JK</th>
+                      <th>Jabatan</th>
+                      <th>Status</th>
+                      <th>Hak Akses</th>
+                      <th style="width: 1%;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- {% set no=namespace(value=1) %} -->
+                    {% for row in container_pegawai %}
+                    <tr style="text-align: center; font-size: 14px;">
+                      <!-- <td style="width: 1%;">{{ no.value }}</td> -->
+                      <!-- {% set no.value=no.value+1 %} -->
+                      <td>{{ row[0] }}</td>
+                      <td>{{ row[7] }}</td>
+                      <td>{{ row[1] }}</td>
+                      <td>{{ row[2] }}</td>
+                      <td>{{ row[3] }}</td>
+                      <td>{{ row[4] }}</td>
+                      <td>{{ row[5] }}</td>
+                      <td>{{ row[6] }}</td>
+                      <td>{{ row[8] }}</td>
+                      <td>{{ row[9] }}</td>
+                      <td style="width: 1%;">
+                        <div class="btn btn-block" style="margin: auto; text-align: center;">
+                          <a href="{{ url_for('update_pegawai', id_pegawai = row[0]) }}" role="button"><i class="fas fa-pen"></i></a>&nbsp;
+                          <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash-alt"></i></a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="text-align: center; color: aliceblue; background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
+                            <p style="text-align: center; font-size: 12px;">Yakin Untuk Hapus  ?</p>
+                            <a class="btn btn-danger btn-sm" href="{{ url_for('delete_pegawai', id_pegawai = row[0]) }}" style="font-size: 10px; text-align: center;">Lanjut Hapus</a><br>
+                            <a class="btn btn-light btn-sm" href="{{ url_for('pegawai') }}" style="font-size: 10px; text-align: center; margin-top: 5px;">Batalkan</a>
+                          </div>
+                        </div>
+                      </td>  
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="addPegawaiModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="{{ url_for('insert_pegawai') }}" method="POST" >
+            <div class="modal-header">						
+              <h4 class="modal-title">Tambah Data Pegawai</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+              <input type="hidden" name="id_pegawai" class="form-control">
+              <div class="form-group">
+                <label for="nik">NIK/KTP</label>
+                <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukkan Nomor NIK ...">
+              </div>
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Lengkap ...">
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username ...">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan Password ...">
+              </div>
+              <div class="form-group col-md-14">
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <select id="jenis_kelamin" class="form-control" name="jenis_kelamin" placeholder="Masukkan Jenis Kelamin ...">
+                  <option value="">-- Pilih Jenis Kelamin : --</option>
+                  <option value="Pria">Pria</option>
+                  <option value="Wanita">Wanita</option>
+                </select>
+              </div>
+              <div class="form-group col-md-14">
+                <label for="jabatan">Jabatan</label>
+                <select id="jabatan" class="form-control" name="jabatan" placeholder="Masukkan Jabatan ...">
+                  <option value="">-- Pilih Jabatan : --</option>
+                  <option value="Admin_HR">Admin (HR)</option>
+                  <option value="Accounting">Accounting</option>
+                  <option value="PIC">PIC</option>
+                  <option value="Harian">Harian</option>
+                  <option value="Borongan">Borongan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tanggal_masuk">Tgl. Masuk</label>
+                <input type="date" class="form-control" id="tanggal_masuk" name="tanggal_masuk" placeholder="Masukkan Tanggal Masuk ...">
+              </div>
+              <div class="form-group col-md-14">
+                <label for="status">Status</label>
+                <select id="status" class="form-control" name="status" placeholder="Masukkan Status ...">
+                  <option value="">-- Pilih Status : --</option>
+                  <option value="Aktif">Aktif</option>
+                  <option value="Tidak Aktif">Tidak Aktif</option>
+                </select>
+              </div>
+              <div class="form-group col-md-14">
+                <label for="hak_akses">Hak Akses</label>
+                <select id="hak_akses" class="form-control" name="hak_akses" placeholder="Masukkan Hak Akses ...">
+                  <option value="">-- Pilih Akses : --</option>
+                  <option value="Admin_HR">Admin (HR)</option>
+                  <option value="Accounting">Accounting</option>
+                  <option value="PIC">PIC</option>
+                  <option value="Harian">Harian</option>
+                  <option value="Borongan">Borongan</option>
+                </select>
+              </div>			
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-success" value="Add">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include 'footer.html' %}

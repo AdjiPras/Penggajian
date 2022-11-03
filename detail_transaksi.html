@@ -1,0 +1,66 @@
+{% include 'header.html' %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="background-image: url('https://www.kibrispdr.org/data/12/background-motif-putih-12.jpg'); background-size: cover;">
+    <!-- Main content -->
+    <section class="content" >
+      <div class="container-fluid">
+        
+        <div class="row">
+          <div class="col-md-6" style="margin: auto; margin-top: 10px; ">
+            <!-- general form elements -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center; color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">						
+                      <h4 class="modal-title">Slip Gaji</h4>
+                    </div>
+                    <div class="modal-body">
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" action="#" method="POST" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" style="background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20210115/pngtree-white-elegant-texture-abstract-geometric-minimalistic-background-image_523653.jpg'); background-size: cover;">
+                      <div class="card-body" style="font-size: 17px; "> 
+                        <div class="img-fluid">
+                          <img src="{{ url_for('static', filename='dist/img/gaji2.png')}}" border="0" style="position:absolute;
+                          margin-left:auto;
+                          margin-right:auto;
+                          margin-top:auto;
+                          margin-bottom:auto;
+                          left:0;
+                          right:0;
+                          top:0;
+                          bottom:0; opacity: 0.25; text-align: center; max-width: 70%; height: auto;">
+                        <div>
+                        <div>
+                            <p style="font-size: 23px; font-weight: bold; text-align: center; padding-top: 10px;">{{ data_gj[3] }}<br>
+                            <p style="text-align: center"><b>{{ data_gj[0] }} | {{ data_gj[2] }} | {{ data_gj[5] }} | {{ data_gj[1] }}</b></p></p>
+                        </div>
+                        <hr>
+                        <div>
+                            <p style="font-size: 18px; font-weight: bold; text-align: left; margin-top: 10px;">
+                                Rincian Gaji :
+                            </p>
+                            <p><b>Gaji Pokok :</b>&nbsp;{{ data_gj[6] }}
+                            <p><b>Tj. Transport :</b>&nbsp;{{ data_gj[7] }}</p>
+                            <p><b>Uang Makan :</b>&nbsp;{{ data_gj[8] }}</p>
+                            <p><b>Potongan :</b>&nbsp;{{ data_gj[9] }}</p>
+                            <hr>
+                            <p><b>Total Gaji :</b>&nbsp;{{ data_gj[10] }}</p>
+                            <div class="modal-footer">
+                              <a class="" action="action" onclick="window.history.go(-1); return false;" type="submit" value="" style="border-radius: 5px; font-size: 14px; color: white; padding: 5px; background-color: #DC143C; width: 60px; text-align: center;"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back</a>
+                            </div>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.card -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% include 'footer.html' %}

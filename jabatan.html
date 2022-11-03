@@ -1,0 +1,113 @@
+{% include 'header.html' %}
+  <div class="content-wrapper" style="background-image: url('static/dist/img/white2.jpg'); background-size: cover;">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12">
+            <h1 class="m-0">Data Jabatan</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12" style="margin: auto;">
+            <div class="card">
+              <div class="card-body table-responsive p-2">
+                <table  id="example1" class="table table-bordered table-striped">
+                  <div>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-light alert-dismissable" style="background-color: #E0FFFF; color: darkcyan;" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                    {{message}}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                  </div>
+                  <a href="#addJabatanModal" class="btn btn-success btn-sm" data-toggle="modal" style="float: right;"><i class="fas fa-plus-circle"></i>&nbsp;<span>Add Jabatan</span></a>
+                  <thead>
+                    <tr style="text-align: center; color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">
+                      <!-- <th style="width: 1%;">No</th> -->
+                      <th style="width: 1%;">ID</th>
+                      <th>Nama</th>
+                      <th>Gaji Pokok</th>
+                      <th>Tj. Transport</th>
+                      <th>Uang Makan</th>
+                      <th style="width: 1%;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- {% set no=namespace(value=1) %} -->
+                    {% for row in container_jabatan %}
+                    <tr style=" font-size: 14px;">
+                      <!-- <td>{{ no.value }}</td>
+                      {% set no.value=no.value+1 %} -->
+                      <td style="width: 1%; text-align: center;">{{ row[0] }}</td>
+                      <td style="width: 1%; text-align: center;">{{ row[1] }}</td>
+                      <td style="text-align: right;">{{ row[2] }}</td>
+                      <td style="text-align: right;">{{ row[3] }}</td>
+                      <td style="text-align: right;">{{ row[4] }}</td>
+                      <td style="width: 12%;">
+                        <div class="btn btn-block" style="margin: auto; text-align: center;">
+                          <a href="{{ url_for('update_jabatan', id_jabatan = row[0]) }}" class="btn btn-info btn-sm" role="button"><i class="fas fa-pen"></i></a>
+                          <a class="btn btn-danger btn-sm" style="border-radius: 20px;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash-alt"></i></a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="text-align: center; color: aliceblue; background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
+                            <p style="text-align: center; font-size: 12px;">Yakin Untuk Hapus  ?</p>
+                            <a class="btn btn-danger btn-sm" href="{{ url_for('delete_jabatan', id_jabatan = row[0]) }}" style="font-size: 10px; text-align: center;">Lanjut Hapus</a><br>
+                            <a class="btn btn-light btn-sm" href="{{ url_for('jabatan') }}" style="font-size: 10px; text-align: center; margin-top: 5px;">Batalkan</a>
+                          </div>
+                        </div>
+                      </td>  
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="addJabatanModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="{{ url_for('insert_jabatan') }}" method="POST" >
+            <div class="modal-header">						
+              <h4 class="modal-title">Tambah Data Jabatan</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+              <input type="hidden" name="id_jabatan" class="form-control">
+              <div class="form-group">
+                <label for="nama_jabatan">Nama Jabatan</label>
+                <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan" placeholder="Masukkan Nama Jabatan ...">
+              </div>
+              <div class="form-group">
+                <label for="gaji_pokok">Gaji Pokok</label>
+                <input type="text" class="form-control" id="gaji_pokok" name="gaji_pokok" placeholder="Masukkan Gaji Pokok ...">
+              </div>
+              <div class="form-group">
+                <label for="tj_transport">Tunjangan Transport</label>
+                <input type="text" class="form-control" id="tj_transport" name="tj_transport" placeholder="Masukkan Tunjangan Transport ...">
+              </div>
+              <div class="form-group">
+                <label for="uang_makan">Uang Makan</label>
+                <input type="text" class="form-control" id="uang_makan" name="uang_makan" placeholder="Masukkan Uang Makan ...">
+              </div>				
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-success" value="Add">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include 'footer.html' %}
