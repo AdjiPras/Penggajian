@@ -12,10 +12,10 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div class="col-10" style="margin: auto;">
             <div class="card">
               <div class="card-body table-responsive p-2">
-                <table  id="example1" class="table table-bordered table-striped">
+                <table  id="example" class="table table-bordered table-striped">
                   <div>
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
@@ -33,36 +33,26 @@
                   <a href="#addPegawaiModal" class="btn btn-success btn-sm" data-toggle="modal" style="float: right;"><i class="fas fa-plus-circle"></i>&nbsp;<span> Add Data</span></a>
                   <thead>
                     <tr style="text-align: center; color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">
-                      <!-- <th style="width: 1%;">No</th> -->
                       <th style="width: 1%;">ID</th>
                       <th>Tgl Masuk</th>
                       <th>NIK</th>
                       <th>Nama</th>
-                      <th>Username</th>
-                      <th>Password</th>
-                      <th>JK</th>
+                      <th>Gender</th>
                       <th>Jabatan</th>
                       <th>Status</th>
-                      <th>Hak Akses</th>
                       <th style="width: 1%;">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- {% set no=namespace(value=1) %} -->
                     {% for row in container_pegawai %}
                     <tr style="text-align: center; font-size: 14px;">
-                      <!-- <td style="width: 1%;">{{ no.value }}</td> -->
-                      <!-- {% set no.value=no.value+1 %} -->
                       <td>{{ row[0] }}</td>
                       <td>{{ row[7] }}</td>
                       <td>{{ row[1] }}</td>
                       <td>{{ row[2] }}</td>
-                      <td>{{ row[3] }}</td>
-                      <td>{{ row[4] }}</td>
                       <td>{{ row[5] }}</td>
                       <td>{{ row[6] }}</td>
                       <td>{{ row[8] }}</td>
-                      <td>{{ row[9] }}</td>
                       <td style="width: 1%;">
                         <div class="btn btn-block" style="margin: auto; text-align: center;">
                           <a href="{{ url_for('update_pegawai', id_pegawai = row[0]) }}" role="button"><i class="fas fa-pen"></i></a>&nbsp;
@@ -88,7 +78,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <form action="{{ url_for('insert_pegawai') }}" method="POST" >
-            <div class="modal-header">						
+            <div class="modal-header">
               <h4 class="modal-title">Tambah Data Pegawai</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>

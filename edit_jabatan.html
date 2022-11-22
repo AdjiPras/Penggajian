@@ -1,25 +1,23 @@
 {% include 'header.html' %}
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="background-image: url('static/dist/img/white2.jpg'); background-size: cover;">
+  <div class="content-wrapper" style="background-image: url('https://www.kibrispdr.org/data/12/background-motif-putih-12.jpg'); background-size: cover;">
     <!-- Main content -->
     <section class="content" >
       <div class="container-fluid">
         
         <div class="row">
-          <div class="col-md-6" style="margin: auto; margin-top: 80px;">
+          <div class="col-md-4" style="margin: auto; margin-top: 80px;">
             <!-- general form elements -->
             <div class="card card-dark">
-                <div class="card-header" style="background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
-                  <h3 class="card-title">Form Edit Data</h3>
-                </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form role="form" action="{{ url_for('update_jb') }}" method="POST" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" style="background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20210115/pngtree-white-elegant-texture-abstract-geometric-minimalistic-background-image_523653.jpg'); background-size: cover;">
+                  <div class="modal-header">						
+                    <h4 class="modal-title">Form Ubah Jabatan</h4>
+                    <button type="button" class="close" aria-hidden="true" onClick="history.go(-1);">&times;</button>
+                  </div>
                   <div class="card-body">
-                    <div class="form-group">
-                      <label for="id_jabatan">ID Jabatan</label>
-                      <input type="text" class="form-control" id="id_jabatan" name="id_jabatan" value="{{ data_jb[0] }}" readonly>
-                    </div>
+                    <input type="hidden" name="id_jabatan" class="form-control" value="{{ data_jb[0] }}">
                     <div class="form-group">
                       <label for="nama_jabatan">Nama Jabatan</label>
                       <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan" value="{{ data_jb[1] }}">
@@ -37,11 +35,9 @@
                       <input type="text" class="form-control" id="uang_makan" name="uang_makan" value="{{ data_jb[4] }}">
                     </div>
                   </div>
-                  <!-- /.card-body -->
-  
-                  <div class="card-footer" style="background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover; ">
+                  <div class="card-footer" style="background-color: #C0C0C0;">
                     <button type="submit" class="btn btn-info btn-sm" style="float: right; margin-left: 5px;"><i class="fa fa-save"></i> Save Changes</button>
-                    <button TYPE="button" class="btn btn-danger btn-sm" style=" width: 80px; float: right;"  VALUE="" onClick="history.go(-1);"><i class="fas fa-exclamation-circle"></i> Cancel</button>
+                    <button TYPE="button" class="btn btn-default btn-sm" style=" width: 80px; float: right;"  VALUE="" onClick="history.go(-1);"><i class="fas fa-exclamation-circle"></i> Cancel</button>
                   </div>
                 </form>
               </div>

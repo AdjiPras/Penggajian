@@ -1,0 +1,101 @@
+{% include 'header.html' %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="background-image: url('static/dist/img/white2.jpg'); background-size: cover;">
+    <!-- Main content -->
+    <section class="content" >
+      <div class="container-fluid">
+        
+        <div class="row">
+          <div class="col-md-6" style="margin: auto; margin-top: 20px; ">
+            <!-- general form elements -->
+            <div class="card card-dark">
+              <div class="card-header" style="color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">
+                <h3 class="card-title">Tambah Data Pegawai</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="{{ url_for('insert_pegawai') }}" method="POST" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="card-body">
+                  <input type="hidden" name="id_pegawai" class="form-control">
+                  <!-- <div class="form-group">
+                    <label for="id_pegawai">ID</label>
+                    <input type="text" class="form-control" id="id_pegawai" name="id_pegawai" placeholder="Masukkan ID ...">
+                  </div> -->
+                  <div class="form-group">
+                    <label for="nik">NIK/KTP</label>
+                    <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukkan Nomor NIK ...">
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Lengkap ...">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username ...">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan Password ...">
+                  </div>
+                  <div class="form-group col-md-14">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select id="jenis_kelamin" class="form-control" name="jenis_kelamin" placeholder="Masukkan Jenis Kelamin ...">
+                      <option value="">-- Pilih Jenis Kelamin : --</option>
+                      <option value="Pria">Pria</option>
+                      <option value="Wanita">Wanita</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-14">
+                    <label for="jabatan">Jabatan</label>
+                    <select id="jabatan" class="form-control" name="jabatan" placeholder="Masukkan Jabatan ...">
+                      <option value="">-- Pilih Jabatan : --</option>
+                      <option value="Admin_HR">Admin (HR)</option>
+                      <option value="Accounting">Accounting</option>
+                      <option value="PIC">PIC</option>
+                      <option value="Harian">Harian</option>
+                      <option value="Borongan">Borongan</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="tanggal_masuk">Tgl. Masuk</label>
+                    <input type="date" class="form-control" id="tanggal_masuk" name="tanggal_masuk" placeholder="Masukkan Tanggal Masuk ...">
+                  </div>
+                  <div class="form-group col-md-14">
+                    <label for="status">Status</label>
+                    <select id="status" class="form-control" name="status" placeholder="Masukkan Status ...">
+                      <option value="">-- Pilih Status : --</option>
+                      <option value="Aktif">Aktif</option>
+                      <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-14">
+                    <label for="hak_akses">Hak Akses</label>
+                    <select id="hak_akses" class="form-control" name="hak_akses" placeholder="Masukkan Hak Akses ...">
+                      <option value="">-- Pilih Akses : --</option>
+                      <option value="0">Admin (HR)</option>
+                      <option value="1">Accounting</option>
+                      <option value="2">PIC</option>
+                      <option value="3">Harian</option>
+                      <option value="4">Borongan</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer" style="background-image: linear-gradient(#ADD8E6, #1E90FF);">
+                  <button type="submit" class="btn btn-info btn-sm" style="float: right; margin-left: 5px;"><i class="fa fa-save"></i> Save</button>
+                  <button TYPE="button" class="btn btn-danger btn-sm" style=" width: 80px; float: right;"  VALUE="" onClick="history.go(-1);"><i class="fas fa-exclamation-circle"></i> Cancel</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% include 'footer.html' %}

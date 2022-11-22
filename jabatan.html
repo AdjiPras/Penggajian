@@ -12,10 +12,10 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12" style="margin: auto;">
+          <div class="col-8" style="margin: auto;">
             <div class="card">
               <div class="card-body table-responsive p-2">
-                <table  id="example1" class="table table-bordered table-striped">
+                <table  id="example" class="table table-bordered table-striped">
                   <div>
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
@@ -55,8 +55,8 @@
                       <td style="text-align: right;">{{ row[4] }}</td>
                       <td style="width: 12%;">
                         <div class="btn btn-block" style="margin: auto; text-align: center;">
-                          <a href="{{ url_for('update_jabatan', id_jabatan = row[0]) }}" class="btn btn-info btn-sm" role="button"><i class="fas fa-pen"></i></a>
-                          <a class="btn btn-danger btn-sm" style="border-radius: 20px;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash-alt"></i></a>
+                          <a href="{{ url_for('update_jabatan', id_jabatan = row[0]) }}"  role="button"><i class="fas fa-pen"></i></a>&nbsp;
+                          <a style="border-radius: 20px;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash-alt"></i></a>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="text-align: center; color: aliceblue; background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
                             <p style="text-align: center; font-size: 12px;">Yakin Untuk Hapus  ?</p>
                             <a class="btn btn-danger btn-sm" href="{{ url_for('delete_jabatan', id_jabatan = row[0]) }}" style="font-size: 10px; text-align: center;">Lanjut Hapus</a><br>

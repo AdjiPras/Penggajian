@@ -1,26 +1,21 @@
 {% include 'header.html' %}
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="background-image: url('static/dist/img/white2.jpg'); background-size: cover;">
+  <div class="content-wrapper" style="background-image: url('https://www.kibrispdr.org/data/12/background-motif-putih-12.jpg'); background-size: cover;">
     <!-- Main content -->
     <section class="content" >
       <div class="container-fluid">
         
         <div class="row">
-          <div class="col-md-6" style="margin: auto; margin-top: 20px;">
+          <div class="col-md-4" style="margin: auto; margin-top: 20px;">
             <!-- general form elements -->
             <div class="card card-dark">
-                <div class="card-header" style="background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
-                  <h3 class="card-title">Form Edit Data</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
                 <form role="form" action="{{ url_for('update_pg') }}" method="POST" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" style="background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20210115/pngtree-white-elegant-texture-abstract-geometric-minimalistic-background-image_523653.jpg'); background-size: cover;">
+                  <div class="modal-header">						
+                    <h4 class="modal-title">Form Ubah Pegawai</h4>
+                    <button type="button" class="close" aria-hidden="true" onClick="history.go(-1);">&times;</button>
+                  </div>
                   <div class="card-body">
                     <input type="hidden" name="id_pegawai" class="form-control" value="{{ data_pg[0] }}">
-                    <!-- <div class="form-group">
-                      <label for="id_pegawai">ID</label>
-                      <input type="text" class="form-control" id="id_pegawai" name="id_pegawai" value="{{ data_pg[0] }}">
-                    </div> -->
                     <div class="form-group">
                       <label for="nik">NIK/KTP</label>
                       <input type="text" class="form-control" id="nik" name="nik" value="{{ data_pg[1] }}">
@@ -29,26 +24,14 @@
                       <label for="nama">Nama</label>
                       <input type="text" class="form-control" id="nama" name="nama" value="{{ data_pg[2] }}">
                     </div>
-                    <div class="form-group">
-                      <label for="username">Username</label>
-                      <input type="text" class="form-control" id="username" name="username" value="{{ data_pg[3] }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="text" class="form-control" id="password" name="password" value="{{ data_pg[4] }}">
-                    </div>
-                    <div class="form-group col-md-14">
-                      <label for="jenis_kelamin">Jenis Kelamin</label>
-                      <select id="jenis_kelamin" class="form-control" name="jenis_kelamin" value="{{ data_pg[5] }}">
-                        <option value="">-- Pilih Jenis Kelamin : --</option>
-                        <option value="Pria">Pria</option>
-                        <option value="Wanita">Wanita</option>
-                      </select>
-                    </div>
+                    <input type="hidden" name="username" class="form-control" value="{{ data_pg[3] }}">
+                    <input type="hidden" name="password" class="form-control" value="{{ data_pg[4] }}">
+                    <input type="hidden" name="jenis_kelamin" class="form-control" value="{{ data_pg[5] }}">
                     <div class="form-group col-md-14">
                       <label for="jabatan">Jabatan</label>
-                      <select id="jabatan" class="form-control" name="jabatan" value="{{ data_pg[6] }}">
-                        <option value="">-- Pilih Jabatan : --</option>
+                      <select id="jabatan" class="form-control" name="jabatan" value="">
+                        <option value="{{ data_pg[6] }}">{{ data_pg[6] }} (Current)</option>
+                        <option value="">-- Ubah Jenis Jabatan : --</option>
                         <option value="Admin_HR">Admin (HR)</option>
                         <option value="Accounting">Accounting</option>
                         <option value="PIC">PIC</option>
@@ -56,14 +39,12 @@
                         <option value="Borongan">Borongan</option>
                       </select>
                     </div>
-                    <div class="form-group">
-                      <label for="tanggal_masuk">Tgl. Masuk</label>
-                      <input type="date" class="form-control" id="tanggal_masuk" name="tanggal_masuk" value="{{ data_pg[7] }}">
-                    </div>
+                    <input type="hidden" name="tanggal_masuk" class="form-control" value="{{ data_pg[7] }}">
                     <div class="form-group col-md-14">
                       <label for="status">Status</label>
-                      <select id="status" class="form-control" name="status" value="{{ data_pg[8] }}">
-                        <option value="">-- Pilih Status : --</option>
+                      <select id="status" class="form-control" name="status" value="">
+                        <option value="{{ data_pg[8] }}">{{ data_pg[8] }} (Current)</option>
+                        <option value="">-- Ubah Status : --</option>
                         <option value="Aktif">Aktif</option>
                         <option value="Tidak Aktif">Tidak Aktif</option>
                       </select>
@@ -71,18 +52,19 @@
                     <div class="form-group col-md-14">
                       <label for="hak_akses">Hak Akses</label>
                       <select id="hak_akses" class="form-control" name="hak_akses" value="{{ data_pg[9] }}">
-                        <option value="">-- Pilih Akses : --</option>
-                        <option value="0">Admin (HR)</option>
-                        <option value="1">Accounting</option>
-                        <option value="2">PIC</option>
+                        <option value="{{ data_pg[9] }}">{{ data_pg[9] }} (Current)</option>
+                        <option value="">-- Ubah Akses : --</option>
+                        <option value="Admin_HR">Admin (HR)</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="PIC">PIC</option>
+                        <option value="Harian">Harian</option>
+                        <option value="Borongan">Borongan</option>
                       </select>
                     </div>
                   </div>
-                  <!-- /.card-body -->
-  
-                  <div class="card-footer" style="background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover; ">
+                  <div class="card-footer" style="background-color: #C0C0C0;">
                     <button type="submit" class="btn btn-info btn-sm" style="float: right; margin-left: 5px;"><i class="fa fa-save"></i> Save Changes</button>
-                    <button TYPE="button" class="btn btn-danger btn-sm" style=" width: 80px; float: right;"  VALUE="" onClick="history.go(-1);"><i class="fas fa-exclamation-circle"></i> Cancel</button>
+                    <button TYPE="button" class="btn btn-default btn-sm" style=" width: 80px; float: right;"  VALUE="" onClick="history.go(-1);"><i class="fas fa-exclamation-circle"></i> Cancel</button>
                   </div>
                 </form>
               </div>

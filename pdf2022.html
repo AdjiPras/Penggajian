@@ -14,41 +14,41 @@
     <h1 class="text-center mt-4">Dokumen Laporan Gaji Pegawai<br>
     Tahun 2021</h1>
   
-    <table class="table mt-4">
-        <thead class="table-dark">
-          <tr>
-            <th>ID Gaji</th>
-            <th>Tanggal</th>
-            <th>NIK</th>
-            <th>Nama Pegawai</th>
-            <th>JK</th>
-            <th>Jabatan</th>
-            <th>Gaji Pokok</th>
-            <th>Tj.Transport</th>
-            <th>Makan</th>
-            <th>Jml.Potongan</th>
-            <th>Total Gaji</th>
-            <th>Validasi</th>
-          </tr>
-        </thead>
-        {% for row in container_transaksi_2022 %}
-        <tbody>
-          <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
-            <td>{{ row[5] }}</td>
-            <td style="text-align: right;">{{ row[6] }}</td>
-            <td style="text-align: right;">{{ row[7] }}</td>
-            <td style="text-align: right;">{{ row[8] }}</td>
-            <td style="text-align: right;">{{ row[9] }}</td>
-            <td style="text-align: right;">{{ row[10] }}</td>
-            <td style="text-align: center;">{{ row[11] }}</td>
-          </tr>
-        </tbody>
-        {% endfor %}
+    <table class="table mt-4 table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th style="width: 1%;">Tahun</th> 
+          <th style="width: 1%;">ID</th>
+          <th>NIK</th>
+          <th>Nama Pegawai</th>
+          <th>JK</th>
+          <th>Jabatan</th>
+          <th>Gaji Pokok</th>
+          <th>Tj.Transport</th>
+          <th>Makan</th>
+          <th>Jml.Potongan</th>
+          <th>Total Gaji</th>
+          <th>Validasi</th>
+        </tr>
+      </thead>
+      {% for row in container_transaksi %}
+      <tbody>
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ row[1] }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+          <td>{{ row[4] }}</td>
+          <td>{{ row[5] }}</td>
+          <td>{{ row[6] }}</td>
+          <td style="text-align: right;">{{ row[7] }}</td>
+          <td style="text-align: right;">{{ row[8] }}</td>
+          <td style="text-align: right;">{{ row[9] }}</td>
+          <td style="text-align: right;">{{ row[10] }}</td>
+          <td style="text-align: right; font-weight: bold;">{{ row[11] }}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
     </table>
   </body>
 </html>

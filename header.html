@@ -256,7 +256,15 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->          
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview">
+            <a href="{{ url_for('index') }}" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p style="font-size: 17px;">
+                Home
+              </p>
+            </a>
+          </li>          
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
@@ -278,14 +286,6 @@
               <li class="nav-item">
                 <a href="{{ url_for('jabatan') }}" class="nav-link">
                   <p>Data Jabatan</p>
-                </a>
-              </li>
-            </ul>
-            <!-- Absensi  -->
-            <ul class="nav nav-treeview ">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>Data Presensi</p>
                 </a>
               </li>
             </ul>
@@ -336,47 +336,12 @@
             </a>
             <ul class="nav nav-treeview ">
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>Laporan Ppresensi</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview ">
-              <li class="nav-item">
                 <a href="{{ url_for('laporan') }}" class="nav-link">
                   <p>Laporan Gaji</p>
                 </a>
               </li>
             </ul>
           </li>
-
-          <!-- ABOUT -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-pen-square" ></i>
-              <p style="font-size: 17px;">
-                About
-                <i class="fas fa-sort-down right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview ">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>Sistem</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>Contact</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url_for('jual') }}" class="nav-link">
-                  <p>Jual</p>
-                </a>
-              </li>
-            </ul>
-          </li>  
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

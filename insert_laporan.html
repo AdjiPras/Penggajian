@@ -1,0 +1,76 @@
+{% include 'header.html' %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Tambah Data veksinasi</h1>
+          </div>
+        </div>
+        /.row -->
+      <!-- </div> -->
+      <!-- /.container-fluid -->
+    <!-- </div> -->
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        
+        <div class="row">
+          <div class="col-md-6" style="margin: auto; margin-top: 50px;">
+            <!-- general form elements -->
+            <div class="card card-dark">
+              <div class="card-header" style="background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
+                <h3 class="card-title">Form Laporan</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="{{ url_for('insert_laporan') }}" method="POST"  style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" style="background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20210115/pngtree-white-elegant-texture-abstract-geometric-minimalistic-background-image_523653.jpg'); background-size: cover;">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="ktp">NIK</label>
+                    <input type="text" class="form-control" id="ktp" name="ktp" placeholder="Masukkan Nomor KTP...">
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama...">
+                  </div>
+                  <div class="form-group">
+                    <label for="laporan">Laporan</label>
+                    <input type="text" class="form-control" id="laporan" name="laporan" placeholder="Masukkan Laporan...">
+                  </div>
+                  <div class="form-group">
+                    <label for="tanggal_lapor">Tanggal Lapor</label>
+                    <input type="date" class="form-control" id="tanggal_lapor" name="tanggal_lapor" placeholder="Masukkan Tanggal Lapor...">
+                  </div>
+                  <div class="form-group col-md-14">
+                    <label for="status">Status</label>
+                    <select id="status" class="form-control" name="status" placeholder="">
+                      <option value="">-- Pilih Status : --</option>
+                      <option value="Diterima">Diterima</option>
+                      <option value="Proses">Proses</option>
+                      <option value="Selesai">Selesai</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer"  style="background-image: url('https://wallpapercave.com/wp/wp9553544.jpg'); background-size: cover;">
+                  <button type="submit" class="btn btn-info btn-sm" style="float: right; margin-left: 5px;"><i class="fa fa-save"></i> Lapor</button>
+                  <button TYPE="button" class="btn btn-danger btn-sm" style=" width: 80px; float: right;"  VALUE="" onClick="history.go(-1);"><i class="fas fa-exclamation-circle"></i> Cancel</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% include 'footer.html' %}

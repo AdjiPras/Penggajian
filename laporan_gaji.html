@@ -28,8 +28,8 @@
                   <a href="{{ url_for('laporan_gaji') }}" class="btn btn-warning btn-sm" value="Cetak" target="new" style="padding: 7.5px; font-weight: bold;"><i class="fas fa-file-pdf">&nbsp;</i>Download (PDF)</a>
                   <thead>
                     <tr style="text-align: center; color: darkslategray; background-image: linear-gradient(#1E90FF, #ADD8E6);">
-                        <th>ID</th>
-                        <th>Tanggal</th>
+                        <th style="width: 1%;">Tahun</th>  
+                        <th style="width: 1%;">ID</th>
                         <th>NIK</th>
                         <th>Nama</th>
                         <th>JK</th>
@@ -51,12 +51,12 @@
                       <td>{{ row[3] }}</td>
                       <td>{{ row[4] }}</td>
                       <td>{{ row[5] }}</td>
-                      <td style="text-align: right;">{{ row[6] }}</td>
+                      <td>{{ row[6] }}</td>
                       <td style="text-align: right;">{{ row[7] }}</td>
                       <td style="text-align: right;">{{ row[8] }}</td>
                       <td style="text-align: right;">{{ row[9] }}</td>
                       <td style="text-align: right;">{{ row[10] }}</td>
-                      <td style="text-align: center;">{{ row[11] }}</td>
+                      <td style="text-align: center; font-weight: bold;">{{ row[11] }}</td>
                     </tr>
                     {% endfor %}
                   </tbody>
